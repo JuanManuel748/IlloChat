@@ -1,0 +1,37 @@
+/* CSS for chat.fxml */
+
+/* General VBox styling */
+.VBox {
+    -fx-background-color: #228be6; /* Blue background */
+    -fx-text-fill: white; /* White text */
+    -fx-font-size: 18px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-max-width: 70%;
+    -fx-spacing: 10px; /* Add spacing between messages */
+}
+
+/* Styling for messages aligned to the left */
+.message-left {
+    -fx-alignment: baseline-left;
+    -fx-background-color: #1e90ff; /* Slightly different blue for left messages */
+    -fx-text-fill: white; /* White text */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-max-width: 70%;
+    -fx-margin: 5px 0; /* Add margin for spacing */
+}
+
+/* Styling for messages aligned to the right */
+.message-right {
+    -fx-alignment: baseline-right;
+    -fx-background-color: #4169e1; /* Slightly different blue for right messages */
+    -fx-text-fill: white; /* White text */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-max-width: 70%;
+    -fx-margin: 5px 0; /* Add margin for spacing */
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<userList>
+    <user>
+        <Name>Andrea</Name>
+        <Surname>Roldan</Surname>
+        <Email>ads@gmail.com</Email>
+        <Password>asdasd</Password>
+    </user>
+    <user>
+        <Name>fran</Name>
+        <Surname>puto</Surname>
+        <Email>fran@gmail.com</Email>
+        <Password>12345678</Password>
+    </user>
+</userList>
