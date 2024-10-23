@@ -34,9 +34,11 @@ public class ChatController extends Controller implements Initializable {
     private static MessageList messageList = new MessageList();
     private User currentUser;
     private User selectedContact;
+    private final String stylesheet = "src\\main\\resources\\com\\github\\JuanManuel\\view\\ChatStyles.css";
 
     @Override
     public void onOpen(Object input) throws Exception {
+        scene.getStylesheets().add(getClass().getResource("ChatStyles.css").toExternalForm());
         // Initialize current user and selected contact
         this.currentUser = LoginController.Sender;
         if (input instanceof User) {
@@ -75,16 +77,26 @@ public class ChatController extends Controller implements Initializable {
     private void displayMessages() {
         messageContainer.getChildren().clear();
         for (Message message : messageList.getMessages()) {
-            if (message.getSender().equals(currentUser) && message.getRecipient().equals(selectedContact) ||
-                    message.getSender().equals(selectedContact) && message.getRecipient().equals(currentUser)) {
+            String SenderEmail = message.getSender().getEmail();
+            String ReceiverEmail = message.getRecipient().getEmail();
+            String currentEmail = currentUser.getEmail();
+            String selectedEmail = selectedContact.getEmail();
+
+            if ((SenderEmail.equals(currentEmail) && ReceiverEmail.equals(selectedEmail)) ||
+                    (SenderEmail.equals(selectedEmail) && ReceiverEmail.equals(currentEmail))) {
+
                 addMessageToContainer(message);
             }
+
         }
     }
+
+
 
     private void addMessageToContainer(Message message) {
         Label messageLabel = new Label(message.toString());
         VBox messageBox = new VBox(messageLabel);
+        messageContainer.getStyleClass().add("message-container");
         if (message.getSender().equals(currentUser)) {
             messageBox.getStyleClass().add("message-right");
         } else {
