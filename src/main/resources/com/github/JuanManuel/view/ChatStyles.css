@@ -23,7 +23,7 @@
     -fx-margin: 5px 0;
 }
 */
-/*
+
 .message-right {
     -fx-alignment: baseline-right;
     -fx-background-color: #4169e1;
@@ -31,7 +31,6 @@
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-padding: 10px;
-    -fx-max-width: 70%;
+    -fx-max-width: 100%;
     -fx-margin: 5px 0;
 }
-*/

@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -24,11 +25,11 @@ public class Message {
     private static final DateTimeFormatter Tformatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     // Full constructor
-    public Message(User sender, User recipient, String content, int messageID) {
+    public Message(User sender, User recipient, String content) {
         this.sender = sender;
         this.recipient = recipient;
         this.content = content;
-        this.messageID = messageID;
+        this.messageID = searchID();
         LocalDate Dnow = LocalDate.now();
         this.date = Dnow.format(Dformatter);
         LocalTime Tnow = LocalTime.now();
@@ -94,5 +95,18 @@ public class Message {
     public String toString() {
         String recipientName = (recipient != null) ? recipient.getName() : "Unknown";
         return String.format("From: %s To: %s\n%s\n%s %s", sender.getName(), recipientName, content, date, time);
+    }
+
+    public int searchID() {
+        List<Message> msgContainer = MessageList_Singleton.getInstance().getMessages();
+        int tempID = 0;
+        for (Message m: msgContainer) {
+            if(m.getMessageID() == tempID)  {
+                tempID++;
+            } else {
+                break;
+            }
+        }
+        return tempID;
     }
 }
