@@ -61,7 +61,7 @@ public class ChatController extends Controller implements Initializable {
     private void handleSendMessage() {
         String content = messageField.getText();
         if (!content.isEmpty()) {
-            Message message = new Message(currentUser, selectedContact, content, 0);
+            Message message = new Message(currentUser, selectedContact, content);
             messageList.addMessage(message);
             addMessageToContainer(message);
             messageField.clear();

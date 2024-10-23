@@ -13,7 +13,7 @@ public class testMessage {
         User Andrea = new User("Andrea", "ande", "andrea@gmail.com", "asdasd12");
         String contentMSG = "Buenos dias loca";
 
-        Message msg1 = new Message(franfu, Andrea, contentMSG, 1);
+        Message msg1 = new Message(franfu, Andrea, contentMSG);
         //XMLManager.writeXML(msg1, WelcomeController.messageXML);
 
 
