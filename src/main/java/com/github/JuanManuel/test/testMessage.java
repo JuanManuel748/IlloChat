@@ -3,9 +3,7 @@ package com.github.JuanManuel.test;
 import com.github.JuanManuel.model.entity.*;
 import com.github.JuanManuel.model.utils.XMLManager;
 import com.github.JuanManuel.view.WelcomeController;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class testMessage {
     public static void main(String[] args) {
@@ -13,8 +11,9 @@ public class testMessage {
         User Andrea = new User("Andrea", "ande", "andrea@gmail.com", "asdasd12");
         String contentMSG = "Buenos dias loca";
 
-        //        //XMLManager.writeXML(msg1, WelcomeController.messageXML);
         Message msg1 = new Message(franfu, Andrea, contentMSG);
+        //XMLManager.writeXML(msg1, WelcomeController.messageXML);
+
 
         MessageList msgLS = new MessageList();
         msgLS.addMessage(msg1);

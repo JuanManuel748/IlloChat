@@ -6,20 +6,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatRoomController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatRoomController">
    <children>
-      <TableView id="TableViewUsers" layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: white;">
+      <TableView id="TableViewUsers" fx:id="tableUsers" layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: white;">
         <columns>
-          <TableColumn id="TableColumnUsers" prefWidth="399.20001220703125" text="Users" />
+          <TableColumn id="TableColumnUsers" fx:id="nameColumn" prefWidth="399.20001220703125" text="Users" />
         </columns>
       </TableView>
-      <Button id="SortByNameButton" layoutX="480.0" layoutY="125.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: #228be6;" text="Nombre" textFill="WHITE">
+      <Button id="SortByNameButton" fx:id="nameButton" layoutX="480.0" layoutY="125.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: #228be6;" text="Nombre" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button id="SortByDateButton" layoutX="480.0" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: #228be6;" text="Fecha" textFill="WHITE">
+      <Button id="SortByDateButton" fx:id="dateButton" layoutX="480.0" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: #228be6;" text="Fecha" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
