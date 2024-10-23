@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<messageList>
-    <message>
-        <sender>
-            <Name>Franfu</Name>
-            <Surname>fran</Surname>
-            <Email>fran@gmail.com</Email>
-            <Password>12345678</Password>
-        </sender>
-        <recipient>
-            <Name>Andrea</Name>
-            <Surname>ande</Surname>
-            <Email>andrea@gmail.com</Email>
-            <Password>asdasd12</Password>
-        </recipient>
-        <content>Buenos dias loca</content>
-        <messageID>0</messageID>
-        <date/>
-        <time/>
-    </message>
-</messageList>
+<message>
+    <sender>
+        <Name>fran</Name>
+        <Surname>puto</Surname>
+        <Email>fran@gmail.com</Email>
+        <Password>12345678</Password>
+    </sender>
+    <recipient>
+        <Name>Anadre</Name>
+        <Surname>Roldan</Surname>
+        <Email>ads@gmail.com</Email>
+        <Password>asdasd</Password>
+    </recipient>
+    <content>Buenos dias</content>
+    <messageID>1</messageID>
+    <date>2024-10-23</date>
+    <time>13:11:44.745338200</time>
+</message>

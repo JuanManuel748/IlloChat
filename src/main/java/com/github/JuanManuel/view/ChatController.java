@@ -45,6 +45,7 @@ public class ChatController extends Controller implements Initializable {
     public void onOpen(Object input) throws Exception {
         // Initialize current user and selected contact
         this.currentUser = LoginController.Sender;
+
         this.selectedContact = (User) new User("Anadre", "Roldan", "ads@gmail.com", "asdasd"); // provisional para probar que funciona el chat
         // Load messages from XML
         messageList = XMLManager.readXML(new MessageList(), WelcomeController.messageXML);
