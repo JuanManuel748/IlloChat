@@ -11,24 +11,3 @@
     -fx-spacing: 10px;
 }
 
-.message-left {
-    -fx-alignment: baseline-left;
-    -fx-background-color: #1e90ff;
-    -fx-text-fill: white;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-padding: 10px;
-    -fx-max-width: 70%;
-    -fx-margin: 5px 0;
-}
-
-.message-right {
-    -fx-alignment: baseline-right;
-    -fx-background-color: #4169e1;
-    -fx-text-fill: white;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-padding: 10px;
-    -fx-max-width: 100%;
-    -fx-margin: 5px 0;
-}
