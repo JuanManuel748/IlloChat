@@ -18,22 +18,5 @@
         <date>23-10-2024</date>
         <time>14:41:24</time>
     </message>
-    <message>
-        <sender>
-            <Name>Franfu</Name>
-            <Surname>fran</Surname>
-            <Email>fran@gmail.com</Email>
-            <Password>12345678</Password>
-        </sender>
-        <recipient>
-            <Name>Andrea</Name>
-            <Surname>ande</Surname>
-            <Email>andrea@gmail.com</Email>
-            <Password>asdasd12</Password>
-        </recipient>
-        <content>Buenos dias loca</content>
-        <messageID>1</messageID>
-        <date>23-10-2024</date>
-        <time>14:43:30</time>
-    </message>
+
 </messageList>
