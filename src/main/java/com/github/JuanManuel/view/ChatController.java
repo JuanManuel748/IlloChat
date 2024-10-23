@@ -10,19 +10,14 @@ import com.github.JuanManuel.view.WelcomeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static com.github.JuanManuel.App.scene;
@@ -38,17 +33,19 @@ public class ChatController extends Controller implements Initializable {
     @FXML
     private VBox messageContainer;
 
-
     private static MessageList messageList = new MessageList();
     private User currentUser;
     private User selectedContact;
+    private final String stylesheet = "src\\main\\resources\\com\\github\\JuanManuel\\view\\ChatStyles.css";
 
     @Override
     public void onOpen(Object input) throws Exception {
+        scene.getStylesheets().add(getClass().getResource("ChatStyles.css").toExternalForm());
         // Initialize current user and selected contact
         this.currentUser = LoginController.Sender;
-
-        this.selectedContact = new User("Anadre", "Roldan", "ads@gmail.com", "asdasd"); // provisional para probar que funciona el chat
+        if (input instanceof User) {
+            this.selectedContact = (User) input;
+        }
         // Load messages from XML
         messageList = XMLManager.readXML(new MessageList(), WelcomeController.messageXML);
         displayMessages();
@@ -82,16 +79,26 @@ public class ChatController extends Controller implements Initializable {
     private void displayMessages() {
         messageContainer.getChildren().clear();
         for (Message message : messageList.getMessages()) {
-            if (message.getSender().equals(currentUser) && message.getRecipient().equals(selectedContact) ||
-                    message.getSender().equals(selectedContact) && message.getRecipient().equals(currentUser)) {
+            String SenderEmail = message.getSender().getEmail();
+            String ReceiverEmail = message.getRecipient().getEmail();
+            String currentEmail = currentUser.getEmail();
+            String selectedEmail = selectedContact.getEmail();
+
+            if ((SenderEmail.equals(currentEmail) && ReceiverEmail.equals(selectedEmail)) ||
+                    (SenderEmail.equals(selectedEmail) && ReceiverEmail.equals(currentEmail))) {
+
                 addMessageToContainer(message);
             }
+
         }
     }
+
+
 
     private void addMessageToContainer(Message message) {
         Label messageLabel = new Label(message.toString());
         VBox messageBox = new VBox(messageLabel);
+        messageContainer.getStyleClass().add("message-container");
         if (message.getSender().equals(currentUser)) {
             messageBox.getStyleClass().add("message-right");
         } else {

@@ -2,56 +2,75 @@
 <messageList>
     <message>
         <sender>
-            <Name>Franfu</Name>
-            <Surname>fran</Surname>
-            <Email>fran@gmail.com</Email>
-            <Password>12345678</Password>
+            <Name>a</Name>
+            <Surname>puto</Surname>
+            <Email>a</Email>
+            <Password>a</Password>
         </sender>
         <recipient>
             <Name>Andrea</Name>
-            <Surname>ande</Surname>
-            <Email>andrea@gmail.com</Email>
-            <Password>asdasd12</Password>
-        </recipient>
-        <content>Buenos dias loca</content>
-        <messageID>0</messageID>
-        <date>23-10-2024</date>
-        <time>18:39:21</time>
-    </message>
-    <message>
-        <sender>
-            <Name>a</Name>
-            <Surname>puto</Surname>
-            <Email>a</Email>
-            <Password>a</Password>
-        </sender>
-        <recipient>
-            <Name>Anadre</Name>
-            <Surname>Roldan</Surname>
-            <Email>ads@gmail.com</Email>
-            <Password>asdasd</Password>
-        </recipient>
-        <content>puta</content>
-        <messageID>1</messageID>
-        <date>23-10-2024</date>
-        <time>18:50:49</time>
-    </message>
-    <message>
-        <sender>
-            <Name>a</Name>
-            <Surname>puto</Surname>
-            <Email>a</Email>
-            <Password>a</Password>
-        </sender>
-        <recipient>
-            <Name>Anadre</Name>
             <Surname>Roldan</Surname>
             <Email>ads@gmail.com</Email>
             <Password>asdasd</Password>
         </recipient>
         <content>a</content>
+        <messageID>0</messageID>
+        <date>23-10-2024</date>
+        <time>19:40:07</time>
+    </message>
+    <message>
+        <sender>
+            <Name>a</Name>
+            <Surname>puto</Surname>
+            <Email>a</Email>
+            <Password>a</Password>
+        </sender>
+        <recipient>
+            <Name>Pedro</Name>
+            <Surname>Picapiedras</Surname>
+            <Email>2mac@gmail.com</Email>
+            <Password>antesdecristo</Password>
+        </recipient>
+        <content>a</content>
+        <messageID>1</messageID>
+        <date>23-10-2024</date>
+        <time>19:40:11</time>
+    </message>
+    <message>
+        <sender>
+            <Name>Andrea</Name>
+            <Surname>Roldan</Surname>
+            <Email>ads@gmail.com</Email>
+            <Password>asdasd</Password>
+
+        </sender>
+        <recipient>
+            <Name>a</Name>
+            <Surname>puto</Surname>
+            <Email>a</Email>
+            <Password>a</Password>
+        </recipient>
+        <content>todas putas</content>
         <messageID>2</messageID>
         <date>23-10-2024</date>
-        <time>18:56:41</time>
+        <time>19:40:17</time>
+    </message>
+    <message>
+        <sender>
+            <Name>a</Name>
+            <Surname>puto</Surname>
+            <Email>a</Email>
+            <Password>a</Password>
+        </sender>
+        <recipient>
+            <Name>Andrea</Name>
+            <Surname>Roldan</Surname>
+            <Email>ads@gmail.com</Email>
+            <Password>asdasd</Password>
+        </recipient>
+        <content>GRACIAS PAPA DIOS</content>
+        <messageID>3</messageID>
+        <date>23-10-2024</date>
+        <time>19:44:49</time>
     </message>
 </messageList>
