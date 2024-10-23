@@ -3,12 +3,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@ChatStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@ChatStyles.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatController">
     <children>
         <TextField fx:id="messageField" layoutX="20.0" layoutY="327.0" prefHeight="40.0" prefWidth="400.0" promptText="Ingresa su mensaje" />
         <Button layoutX="451.0" layoutY="327.0" onAction="#handleSendMessage" prefHeight="40.0" prefWidth="72.0" text="Enviar" />
@@ -17,10 +16,10 @@
                 <VBox fx:id="messageContainer" spacing="10.0" />
             </content>
         </ScrollPane>
-        <ImageView fx:id="exitButton" fitHeight="63.0" fitWidth="68.0" layoutX="507.0" layoutY="14.0" onMouseClicked="#goToChatRoom" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@Flechitapatras.png" />
-            </image>
-        </ImageView>
+      <Button fx:id="exitButton" graphicTextGap="1.0" layoutX="20.0" layoutY="20.0" onAction="#goToChatRoom" prefHeight="40.0" prefWidth="72.0" text="🔙" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

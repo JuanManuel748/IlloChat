@@ -18,4 +18,40 @@
         <date>23-10-2024</date>
         <time>18:39:21</time>
     </message>
+    <message>
+        <sender>
+            <Name>a</Name>
+            <Surname>puto</Surname>
+            <Email>a</Email>
+            <Password>a</Password>
+        </sender>
+        <recipient>
+            <Name>Anadre</Name>
+            <Surname>Roldan</Surname>
+            <Email>ads@gmail.com</Email>
+            <Password>asdasd</Password>
+        </recipient>
+        <content>puta</content>
+        <messageID>1</messageID>
+        <date>23-10-2024</date>
+        <time>18:50:49</time>
+    </message>
+    <message>
+        <sender>
+            <Name>a</Name>
+            <Surname>puto</Surname>
+            <Email>a</Email>
+            <Password>a</Password>
+        </sender>
+        <recipient>
+            <Name>Anadre</Name>
+            <Surname>Roldan</Surname>
+            <Email>ads@gmail.com</Email>
+            <Password>asdasd</Password>
+        </recipient>
+        <content>a</content>
+        <messageID>2</messageID>
+        <date>23-10-2024</date>
+        <time>18:56:41</time>
+    </message>
 </messageList>
