@@ -12,4 +12,22 @@
         <Email>fran@gmail.com</Email>
         <Password>12345678</Password>
     </user>
+    <user>
+        <Name>Pedro</Name>
+        <Surname>Picapiedras</Surname>
+        <Email>2mac@gmail.com</Email>
+        <Password>antesdecristo</Password>
+    </user>
+    <user>
+        <Name>Angela</Name>
+        <Surname>pitufa</Surname>
+        <Email>pituga@gmail.com</Email>
+        <Password>hola1234</Password>
+    </user>
+    <user>
+        <Name>Pepillo</Name>
+        <Surname>Pepsi</Surname>
+        <Email>pepillo@gmail.com</Email>
+        <Password>odiomontilla</Password>
+    </user>
 </userList>

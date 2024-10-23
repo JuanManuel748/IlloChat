@@ -17,9 +17,11 @@ public class Message {
     @XmlElement
     private int messageID;
     @XmlElement
-    private LocalDate date;   // Date attribute
+    private String date;   // Date attribute
     @XmlElement
-    private LocalTime time;   // Time attribute
+    private String time;   // Time attribute
+    private static final DateTimeFormatter Dformatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static final DateTimeFormatter Tformatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     // Full constructor
     public Message(User sender, User recipient, String content, int messageID) {
@@ -27,8 +29,10 @@ public class Message {
         this.recipient = recipient;
         this.content = content;
         this.messageID = messageID;
-        this.date = LocalDate.now();
-        this.time = LocalTime.now();
+        LocalDate Dnow = LocalDate.now();
+        this.date = Dnow.format(Dformatter);
+        LocalTime Tnow = LocalTime.now();
+        this.time = Tnow.format(Tformatter);
     }
 
     // Empty constructor
@@ -52,11 +56,11 @@ public class Message {
         return messageID;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public LocalTime getTime() {
+    public String getTime() {
         return time;
     }
 
@@ -78,11 +82,11 @@ public class Message {
     }
 
     public void setDate(LocalDate date) {
-        this.date = date;
+        this.date = date.format(Dformatter);
     }
 
     public void setTime(LocalTime time) {
-        this.time = time;
+        this.time = time.format(Tformatter);
     }
 
     // toString method
