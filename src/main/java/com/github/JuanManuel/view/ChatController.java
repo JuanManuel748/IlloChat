@@ -20,8 +20,6 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.github.JuanManuel.App.scene;
-
 public class ChatController extends Controller implements Initializable {
 
     @FXML
