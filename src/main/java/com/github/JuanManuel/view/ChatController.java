@@ -10,22 +10,15 @@ import com.github.JuanManuel.view.WelcomeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Objects;
 import java.util.ResourceBundle;
-
-import static com.github.JuanManuel.App.scene;
 
 public class ChatController extends Controller implements Initializable {
 
@@ -38,7 +31,6 @@ public class ChatController extends Controller implements Initializable {
     @FXML
     private VBox messageContainer;
 
-
     private static MessageList messageList = new MessageList();
     private User currentUser;
     private User selectedContact;
@@ -47,8 +39,9 @@ public class ChatController extends Controller implements Initializable {
     public void onOpen(Object input) throws Exception {
         // Initialize current user and selected contact
         this.currentUser = LoginController.Sender;
-
-        this.selectedContact = new User("Anadre", "Roldan", "ads@gmail.com", "asdasd"); // provisional para probar que funciona el chat
+        if (input instanceof User) {
+            this.selectedContact = (User) input;
+        }
         // Load messages from XML
         messageList = XMLManager.readXML(new MessageList(), WelcomeController.messageXML);
         displayMessages();

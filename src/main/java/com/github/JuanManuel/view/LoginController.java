@@ -71,7 +71,7 @@ public class LoginController extends Controller implements Initializable {
                     }
                     // Show success message and navigate to main page
                     showAlert(Alert.AlertType.INFORMATION, "Cliente Logueado", "El cliente se ha loqueado correctamente.");
-                    App.currentController.changeScene(Scenes.CHAT, null);
+                    App.currentController.changeScene(Scenes.CHATROOM, null);
 
                 }
             }

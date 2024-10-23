@@ -10,7 +10,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -27,9 +29,12 @@ public class ChatRoomController extends Controller implements Initializable {
     @FXML
     private Button dateButton;
 
+    private User currentUser;
+
     @Override
     public void onOpen(Object input) throws Exception {
         // Lógica para abrir la vista
+        this.currentUser = LoginController.Sender;
         printAllUsers();
     }
 
@@ -41,14 +46,23 @@ public class ChatRoomController extends Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Lógica de inicialización
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         nameButton.setOnAction(this::sortByName);
         dateButton.setOnAction(this::sortByDate);
+
+        tableUsers.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                User selectedUser = tableUsers.getSelectionModel().getSelectedItem();
+                if (selectedUser != null) {
+                    goToChat(selectedUser);
+                }
+            }
+        });
     }
 
-    @FXML
-    private void goToChat(ActionEvent event) {
+    private void goToChat(User selectedUser) {
         try {
-            App.currentController.changeScene(Scenes.CHAT, null);
+            App.currentController.changeScene(Scenes.CHAT, selectedUser);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -80,6 +94,7 @@ public class ChatRoomController extends Controller implements Initializable {
 
     private void printAllUsers() {
         List<User> userList = UserList_Singleton.getInstance().getUsers();
+        userList.removeIf(user -> user.getEmail().equals(currentUser.getEmail()));
         tableUsers.getItems().setAll(userList);
     }
 }
