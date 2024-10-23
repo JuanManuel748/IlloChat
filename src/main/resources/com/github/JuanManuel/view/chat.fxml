@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@ChatStyles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@ChatStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatController">
     <children>
-          <TextField fx:id="messageField" layoutX="20.0" layoutY="300.0" prefHeight="40.0" prefWidth="400.0" promptText="Ingresa su mensaje" />
-          <Button layoutX="450.0" layoutY="300.0" onAction="#handleSendMessage" prefHeight="40.0" prefWidth="72.0" text="Enviar" />
-         <ScrollPane layoutX="20.0" layoutY="50.0" prefHeight="226.0" prefWidth="550.0">
-             <content>
-                 <VBox fx:id="messageContainer" spacing="10.0" />
-             </content>
-         </ScrollPane>
+        <TextField fx:id="messageField" layoutX="20.0" layoutY="327.0" prefHeight="40.0" prefWidth="400.0" promptText="Ingresa su mensaje" />
+        <Button layoutX="451.0" layoutY="327.0" onAction="#handleSendMessage" prefHeight="40.0" prefWidth="72.0" text="Enviar" />
+        <ScrollPane layoutX="20.0" layoutY="74.0" prefHeight="226.0" prefWidth="550.0">
+            <content>
+                <VBox fx:id="messageContainer" spacing="10.0" />
+            </content>
+        </ScrollPane>
+        <ImageView fx:id="exitButton" fitHeight="63.0" fitWidth="68.0" layoutX="507.0" layoutY="14.0" onMouseClicked="#goToChatRoom" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Flechitapatras.png" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>

@@ -3,9 +3,7 @@ package com.github.JuanManuel.test;
 import com.github.JuanManuel.model.entity.*;
 import com.github.JuanManuel.model.utils.XMLManager;
 import com.github.JuanManuel.view.WelcomeController;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class testMessage {
     public static void main(String[] args) {
