@@ -29,16 +29,14 @@ import static com.github.JuanManuel.App.scene;
 
 public class ChatController extends Controller implements Initializable {
 
-
+    @FXML
+    private Button exitButton;
     @FXML
     private AnchorPane anchorPane;
     @FXML
     private TextField messageField;
     @FXML
     private VBox messageContainer;
-
-    @FXML
-    private ImageView exitButton;
 
 
     private static MessageList messageList = new MessageList();
@@ -50,7 +48,7 @@ public class ChatController extends Controller implements Initializable {
         // Initialize current user and selected contact
         this.currentUser = LoginController.Sender;
 
-        this.selectedContact = (User) new User("Anadre", "Roldan", "ads@gmail.com", "asdasd"); // provisional para probar que funciona el chat
+        this.selectedContact = new User("Anadre", "Roldan", "ads@gmail.com", "asdasd"); // provisional para probar que funciona el chat
         // Load messages from XML
         messageList = XMLManager.readXML(new MessageList(), WelcomeController.messageXML);
         displayMessages();
