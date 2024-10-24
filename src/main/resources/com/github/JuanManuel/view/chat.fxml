@@ -21,5 +21,10 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Button>
+      <Button fx:id="downLoadButton" graphicTextGap="1.0" layoutX="498.0" layoutY="20.0" onAction="#exportToCSV" prefHeight="40.0" prefWidth="72.0" text="⬇" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

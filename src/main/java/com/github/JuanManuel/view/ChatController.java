@@ -11,15 +11,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOError;
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +36,7 @@ public class ChatController extends Controller implements Initializable {
     private TextField messageField;
     @FXML
     private VBox messageContainer;
+
 
     private static MessageList messageList = new MessageList();
     private static MessageList ListFilt = new MessageList();
@@ -57,13 +57,12 @@ public class ChatController extends Controller implements Initializable {
 
     @Override
     public void onClose(Object output) {
-        // Save messages to XML when closing
         XMLManager.writeXML(messageList, WelcomeController.messageXML);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Initialization logic if needed
+
     }
 
     @FXML
@@ -83,7 +82,8 @@ public class ChatController extends Controller implements Initializable {
     private void displayMessages() {
         messageContainer.getChildren().clear();
         for (Message message : messageList.getMessages()) {
-            if ((message.getSender().equals(currentUser) && message.getReceiver().equals(selectedContact)) || (message.getSender().equals(selectedContact) && message.getReceiver().equals(currentUser))) {
+            if ((message.getSender().Equals(currentUser) && message.getReceiver().Equals(selectedContact)) ||
+                    (message.getSender().Equals(selectedContact) && message.getReceiver().Equals(currentUser))) {
                 addMessageToContainer(message);
             }
 
@@ -130,19 +130,19 @@ public class ChatController extends Controller implements Initializable {
         }
     }
 
-    /*
-    @FXML
-    public void exportToCSV(ActionEvent event) {
-        try {
-            for (Message m: ListFilt) {
-                //==========================
-                // TERMINAR
-            }
 
-        }catch (IOException IOe) {
-            showAlert(Alert.AlertType.INFORMATION, "ERROR AL EXPORTAR", "Se ha detenido la exportación de la conservación");
+        @FXML
+    public void exportToCSV(ActionEvent event) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("messages.csv"))) {
+            for (Message m : ListFilt.getMessages()) {
+
+                writer.write(m.toCSV());
+            }
+            showAlert(Alert.AlertType.INFORMATION, "Exportación exitosa", "La conversación ha sido exportada a messages.csv");
+        } catch (IOException IOe) {
+            showAlert(Alert.AlertType.ERROR, "ERROR AL EXPORTAR", "Se ha detenido la exportación de la conversación");
         }
     }
-    */
+
 
 }

@@ -115,8 +115,8 @@ public class Message {
 
 
     public String toCSV() {
-        return "Sender: " + this.sender + ", Receiver: " + this.receiver + "\n" +
+        return "From: " + this.sender.getName() + " " +this.sender.getSurname() + ", To: " + this.receiver.getName() + " " +this.receiver.getSurname() + "\n" +
                 this.content + "\n" +
-                this.date + "  " + this.time;
+                this.date + "  " + this.time + "\n";
     }
 }
