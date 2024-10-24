@@ -12,7 +12,7 @@ public class Message {
     @XmlElement
     private User sender;
     @XmlElement
-    private User recipient;
+    private User receiver;
     @XmlElement
     private String content;
     @XmlElement
@@ -27,7 +27,7 @@ public class Message {
     // Full constructor
     public Message(User sender, User recipient, String content) {
         this.sender = sender;
-        this.recipient = recipient;
+        this.receiver = recipient;
         this.content = content;
         this.messageID = searchID();
         LocalDate Dnow = LocalDate.now();
@@ -45,8 +45,8 @@ public class Message {
         return sender;
     }
 
-    public User getRecipient() {
-        return recipient;
+    public User getReceiver() {
+        return receiver;
     }
 
     public String getContent() {
@@ -70,8 +70,8 @@ public class Message {
         this.sender = sender;
     }
 
-    public void setRecipient(User recipient) {
-        this.recipient = recipient;
+    public void setReceiver(User recipient) {
+        this.receiver = recipient;
     }
 
     public void setContent(String content) {
@@ -93,8 +93,11 @@ public class Message {
     // toString method
     @Override
     public String toString() {
-        String recipientName = (recipient != null) ? recipient.getName() : "Unknown";
+        /*
+        String recipientName = (receiver != null) ? receiver.getName() : "Unknown";
         return String.format("From: %s To: %s\n%s\n%s %s", sender.getName(), recipientName, content, date, time);
+        */
+         return this.date + "\n" + this.content + "\n" + this.time;
     }
 
     public int searchID() {
@@ -108,5 +111,12 @@ public class Message {
             }
         }
         return tempID;
+    }
+
+
+    public String toCSV() {
+        return "Sender: " + this.sender + ", Receiver: " + this.receiver + "\n" +
+                this.content + "\n" +
+                this.date + "  " + this.time;
     }
 }

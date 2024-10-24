@@ -3,6 +3,7 @@ package com.github.JuanManuel.view;
 import com.github.JuanManuel.App;
 import com.github.JuanManuel.model.entity.User;
 import com.github.JuanManuel.model.entity.UserList;
+import com.github.JuanManuel.model.utils.HashPass;
 import com.github.JuanManuel.model.utils.XMLManager;
 import com.github.JuanManuel.view.WelcomeController;
 import javafx.event.ActionEvent;
@@ -72,9 +73,10 @@ public class RegisterController extends Controller implements Initializable {
             String email = emailField.getText().trim();
             email = email.toLowerCase();
             String password = passwordField.getText().trim();
+            String hashedPassword = HashPass.hashPassword(password);
 
             // Check if any field is empty
-            if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || hashedPassword.isEmpty()) {
                 showAlert(Alert.AlertType.ERROR, "Campos Vacíos", "Por favor, complete todos los campos.");
             } else {
                 // Validate email format
@@ -84,7 +86,7 @@ public class RegisterController extends Controller implements Initializable {
                     showAlert(Alert.AlertType.ERROR, "Error correo ya existe", "El correo ya existe en el archivo xml.");
                 }else {
                     // Create Client object and save to xml
-                    User userTemp = new User(name, surname, email, password);
+                    User userTemp = new User(name, surname, email, hashedPassword);
                     userContainer.add(userTemp);
                     XMLManager.writeXML(userContainer, WelcomeController.userXML);
 

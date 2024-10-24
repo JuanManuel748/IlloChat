@@ -20,6 +20,8 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.github.JuanManuel.App.scene;
+
 public class ChatController extends Controller implements Initializable {
 
     @FXML
@@ -77,14 +79,7 @@ public class ChatController extends Controller implements Initializable {
     private void displayMessages() {
         messageContainer.getChildren().clear();
         for (Message message : messageList.getMessages()) {
-            String SenderEmail = message.getSender().getEmail();
-            String ReceiverEmail = message.getRecipient().getEmail();
-            String currentEmail = currentUser.getEmail();
-            String selectedEmail = selectedContact.getEmail();
-
-            if ((SenderEmail.equals(currentEmail) && ReceiverEmail.equals(selectedEmail)) ||
-                    (SenderEmail.equals(selectedEmail) && ReceiverEmail.equals(currentEmail))) {
-
+            if ((message.getSender().equals(currentUser) && message.getReceiver().equals(selectedContact)) || (message.getSender().equals(selectedContact) && message.getReceiver().equals(currentUser))) {
                 addMessageToContainer(message);
             }
 
