@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@ChatStyles.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatController">
     <children>
         <TextField fx:id="messageField" layoutX="20.0" layoutY="327.0" prefHeight="40.0" prefWidth="400.0" promptText="Ingresa su mensaje" />
         <Button layoutX="451.0" layoutY="327.0" onAction="#handleSendMessage" prefHeight="40.0" prefWidth="72.0" text="Enviar" />
-        <ScrollPane layoutX="20.0" layoutY="74.0" prefHeight="226.0" prefWidth="550.0">
+        <ScrollPane layoutX="20.0" layoutY="75.0" prefHeight="225.0" prefWidth="550.0">
             <content>
-                <VBox fx:id="messageContainer" spacing="10.0" />
+                <VBox fx:id="messageContainer" prefHeight="200.0" prefWidth="535.0" spacing="10.0" />
             </content>
         </ScrollPane>
         <Button fx:id="exitButton" graphicTextGap="1.0" layoutX="20.0" layoutY="20.0" onAction="#goToChatRoom" prefHeight="40.0" prefWidth="72.0" text="🔙" textAlignment="CENTER">
