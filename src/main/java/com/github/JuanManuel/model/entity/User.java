@@ -75,7 +75,7 @@ public class User {
                 '}';
     }
 
-    public boolean equals (User u) {
+    public boolean Equals (User u) {
         return this.Email.equals(u.getEmail());
     }
 

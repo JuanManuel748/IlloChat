@@ -14,17 +14,6 @@ public class testMessage {
         Message msg1 = new Message(franfu, Andrea, contentMSG);
         //XMLManager.writeXML(msg1, WelcomeController.messageXML);
 
-
-        MessageList msgLS = new MessageList();
-        msgLS.addMessage(msg1);
-
-
-        boolean result = XMLManager.writeXML(msgLS, WelcomeController.messageXML);
-        if (result) {
-            System.out.println("Escrito correctamente");
-        } else {
-            System.out.println("No se ha podido escribir");
-        }
-        System.out.println(msgLS.toString());
+        System.out.println(msg1.toCSV());
     }
 }
