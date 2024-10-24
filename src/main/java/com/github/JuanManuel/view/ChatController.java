@@ -96,7 +96,6 @@ public class ChatController extends Controller implements Initializable {
         //====================================================
         // HACER QUE PEGUE UN INTRO CUANDO SEA MUY LARGO
         //====================================================
-        ListFilt.addMessage(message);
         Label messageLabel = new Label(message.toString());
         VBox messageBox = new VBox(messageLabel);
         messageContainer.getStyleClass().add("message-container");
