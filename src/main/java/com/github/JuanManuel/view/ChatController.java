@@ -10,13 +10,18 @@ import com.github.JuanManuel.view.WelcomeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 
+import java.io.IOError;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,13 +39,12 @@ public class ChatController extends Controller implements Initializable {
     private VBox messageContainer;
 
     private static MessageList messageList = new MessageList();
+    private static MessageList ListFilt = new MessageList();
     private User currentUser;
     private User selectedContact;
-    private final String stylesheet = "src\\main\\resources\\com\\github\\JuanManuel\\view\\ChatStyles.css";
 
     @Override
     public void onOpen(Object input) throws Exception {
-        scene.getStylesheets().add(getClass().getResource("ChatStyles.css").toExternalForm());
         // Initialize current user and selected contact
         this.currentUser = LoginController.Sender;
         if (input instanceof User) {
@@ -89,13 +93,22 @@ public class ChatController extends Controller implements Initializable {
 
 
     private void addMessageToContainer(Message message) {
+        //====================================================
+        // HACER QUE PEGUE UN INTRO CUANDO SEA MUY LARGO
+        //====================================================
+        ListFilt.addMessage(message);
         Label messageLabel = new Label(message.toString());
         VBox messageBox = new VBox(messageLabel);
         messageContainer.getStyleClass().add("message-container");
         if (message.getSender().equals(currentUser)) {
-            messageBox.getStyleClass().add("message-right");
+            messageBox.setAlignment(javafx.geometry.Pos.CENTER_RIGHT);
+            messageBox.setMinHeight(Region.USE_PREF_SIZE);
+            messageLabel.setStyle("-fx-background-color: #228be6; -fx-padding: 10; -fx-background-radius: 5; -fx-border-radius: 5; -fx-margin: 5px 5px 5px 5px;");
         } else {
-            messageBox.getStyleClass().add("message-left");
+            messageBox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+            messageBox.setMinHeight(Region.USE_PREF_SIZE);
+            messageLabel.setStyle("-fx-background-color: #1e90ff; -fx-padding: 10; -fx-background-radius: 5; -fx-border-radius: 5; -fx-margin: 5px 5px 5px 5px;");
+
         }
         messageContainer.getChildren().add(messageBox);
     }
@@ -116,4 +129,20 @@ public class ChatController extends Controller implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    /*
+    @FXML
+    public void exportToCSV(ActionEvent event) {
+        try {
+            for (Message m: ListFilt) {
+                //==========================
+                // TERMINAR
+            }
+
+        }catch (IOException IOe) {
+            showAlert(Alert.AlertType.INFORMATION, "ERROR AL EXPORTAR", "Se ha detenido la exportación de la conservación");
+        }
+    }
+    */
+
 }
