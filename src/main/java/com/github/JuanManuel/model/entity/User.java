@@ -75,4 +75,8 @@ public class User {
                 '}';
     }
 
+    public boolean equals (User u) {
+        return this.Email.equals(u.getEmail());
+    }
+
 }

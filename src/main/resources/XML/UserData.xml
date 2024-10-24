@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <userList>
     <user>
-        <Name>Andrea</Name>
-        <Surname>Roldan</Surname>
-        <Email>ads@gmail.com</Email>
-        <Password>asdasd</Password>
-    </user>
-    <user>
         <Name>a</Name>
-        <Surname>puto</Surname>
-        <Email>a</Email>
-        <Password>a</Password>
+        <Surname>a</Surname>
+        <Email>a@a.com</Email>
+        <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
     </user>
     <user>
-        <Name>Pedro</Name>
-        <Surname>Picapiedras</Surname>
-        <Email>2mac@gmail.com</Email>
-        <Password>antesdecristo</Password>
-    </user>
-    <user>
-        <Name>Angela</Name>
-        <Surname>pitufa</Surname>
-        <Email>pituga@gmail.com</Email>
-        <Password>hola1234</Password>
-    </user>
-    <user>
-        <Name>Pepillo</Name>
-        <Surname>Pepsi</Surname>
-        <Email>pepillo@gmail.com</Email>
-        <Password>odiomontilla</Password>
+        <Name>pollas</Name>
+        <Surname>a</Surname>
+        <Email>e@e.com</Email>
+        <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
     </user>
 </userList>

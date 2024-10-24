@@ -3,6 +3,7 @@ package com.github.JuanManuel.view;
 import com.github.JuanManuel.App;
 import com.github.JuanManuel.model.entity.User;
 import com.github.JuanManuel.model.entity.UserList;
+import com.github.JuanManuel.model.utils.HashPass;
 import com.github.JuanManuel.model.utils.XMLManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,25 +54,33 @@ public class LoginController extends Controller implements Initializable {
             String email = emailField.getText().trim();
             email = email.toLowerCase();
             String password = passwordField.getText().trim();
+            String hashedPassword = HashPass.hashPassword(password);
 
             // Check if any field is empty
-            if (email.isEmpty() || password.isEmpty()) {
+            if (email.isEmpty() || hashedPassword.isEmpty()) {
                 showAlert(Alert.AlertType.ERROR, "Campos Vacíos", "Por favor, complete todos los campos.");
             } else {
                 if (!existsEmail(email)) {
                     showAlert(Alert.AlertType.ERROR, "Error correo no existe", "El correo no existe en el archivo xml.");
                 } else {
-
+                    boolean loged = false;
                     for(User u: userContainer.getUsers()) {
                         if (u.getEmail().equals(email)) {
-                            if (u.getPassword().equals(password)) {
+                            if (u.getPassword().equals(hashedPassword)) {
                                 Sender = u;
+                                loged = true;
+                                break;
                             }
                         }
                     }
                     // Show success message and navigate to main page
-                    showAlert(Alert.AlertType.INFORMATION, "Cliente Logueado", "El cliente se ha loqueado correctamente.");
-                    App.currentController.changeScene(Scenes.CHATROOM, null);
+                    if (loged) {
+                        showAlert(Alert.AlertType.INFORMATION, "Cliente Logueado", "El cliente se ha loqueado correctamente.");
+                        App.currentController.changeScene(Scenes.CHATROOM, null);
+                    } else {
+                        showAlert(Alert.AlertType.INFORMATION, "Cliente no encontrado", "El email o la contraseña no corresponden con los guardados en nuestros archivos.");
+                    }
+
 
                 }
             }

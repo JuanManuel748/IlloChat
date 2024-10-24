@@ -51,7 +51,7 @@ public class ChatRoomController extends Controller implements Initializable {
         dateButton.setOnAction(this::sortByDate);
 
         tableUsers.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) {
+            if (event.getClickCount() == 1) {
                 User selectedUser = tableUsers.getSelectionModel().getSelectedItem();
                 if (selectedUser != null) {
                     goToChat(selectedUser);

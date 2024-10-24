@@ -10,7 +10,7 @@
 
 /* Estilos para los mensajes de la izquierda */
 .message-left {
-    -fx-alignment: center-left; /* Alineación a la izquierda */
+    -fx-alignment: left; /* Alineación a la izquierda */
     -fx-background-color: #1e90ff; /* Color de fondo para mensajes de la izquierda */
     -fx-text-fill: white; /* Color del texto */
     -fx-border-radius: 5px; /* Bordes redondeados */
@@ -22,7 +22,7 @@
 
 /* Estilos para los mensajes de la derecha */
 .message-right {
-    -fx-alignment: center-right; /* Alineación a la derecha */
+    -fx-alignment: right; /* Alineación a la derecha */
     -fx-background-color: #4169e1; /* Color de fondo para mensajes de la derecha */
     -fx-text-fill: white; /* Color del texto */
     -fx-border-radius: 5px; /* Bordes redondeados */
