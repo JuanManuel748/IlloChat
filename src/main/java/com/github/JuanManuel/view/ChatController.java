@@ -22,6 +22,8 @@ import java.io.FileWriter;
 import java.io.IOError;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.ResourceBundle;
 
 import static com.github.JuanManuel.App.scene;
@@ -39,7 +41,7 @@ public class ChatController extends Controller implements Initializable {
 
 
     private static MessageList messageList = new MessageList();
-    private static MessageList ListFilt = new MessageList();
+    private static ArrayList<Message> ListFilt = new ArrayList<>();
     private User currentUser;
     private User selectedContact;
 
@@ -83,10 +85,10 @@ public class ChatController extends Controller implements Initializable {
         messageContainer.getChildren().clear();
         for (Message message : messageList.getMessages()) {
             if ((message.getSender().Equals(currentUser) && message.getReceiver().Equals(selectedContact)) ||
-                    (message.getSender().Equals(selectedContact) && message.getReceiver().Equals(currentUser))) {
-                addMessageToContainer(message);
+                (message.getSender().Equals(selectedContact) && message.getReceiver().Equals(currentUser))) {
+                    ListFilt.add(message);
+                    addMessageToContainer(message);
             }
-
         }
     }
 
@@ -99,14 +101,14 @@ public class ChatController extends Controller implements Initializable {
         Label messageLabel = new Label(message.toString());
         VBox messageBox = new VBox(messageLabel);
         messageContainer.getStyleClass().add("message-container");
-        if (message.getSender().equals(currentUser)) {
+        if (message.getSender().Equals(currentUser)) {
             messageBox.setAlignment(javafx.geometry.Pos.CENTER_RIGHT);
             messageBox.setMinHeight(Region.USE_PREF_SIZE);
-            messageLabel.setStyle("-fx-background-color: #228be6; -fx-padding: 10; -fx-background-radius: 5; -fx-border-radius: 5; -fx-margin: 5px 5px 5px 5px;");
+            messageLabel.setStyle("-fx-background-color: #228be6; -fx-padding: 10; -fx-background-radius: 5; -fx-border-radius: 5; -fx-margin: 5px 5px 5px 5px; -fx-text-fill: white;");
         } else {
             messageBox.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
             messageBox.setMinHeight(Region.USE_PREF_SIZE);
-            messageLabel.setStyle("-fx-background-color: #1e90ff; -fx-padding: 10; -fx-background-radius: 5; -fx-border-radius: 5; -fx-margin: 5px 5px 5px 5px;");
+            messageLabel.setStyle("-fx-background-color: #232d36; -fx-padding: 10; -fx-background-radius: 5; -fx-border-radius: 5; -fx-margin: 5px 5px 5px 5px; -fx-text-fill: white;");
 
         }
         messageContainer.getChildren().add(messageBox);
@@ -133,7 +135,7 @@ public class ChatController extends Controller implements Initializable {
         @FXML
     public void exportToCSV(ActionEvent event) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("messages.csv"))) {
-            for (Message m : ListFilt.getMessages()) {
+            for (Message m : ListFilt) {
 
                 writer.write(m.toCSV());
             }

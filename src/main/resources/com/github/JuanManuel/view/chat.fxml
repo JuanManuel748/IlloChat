@@ -7,21 +7,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatController">
     <children>
         <TextField fx:id="messageField" layoutX="20.0" layoutY="327.0" prefHeight="40.0" prefWidth="400.0" promptText="Ingresa su mensaje" />
-        <Button layoutX="451.0" layoutY="327.0" onAction="#handleSendMessage" prefHeight="40.0" prefWidth="72.0" text="Enviar" />
-        <ScrollPane layoutX="20.0" layoutY="75.0" prefHeight="225.0" prefWidth="550.0">
+        <Button layoutX="451.0" layoutY="327.0" onAction="#handleSendMessage" prefHeight="40.0" prefWidth="72.0" style="-fx-background-color: #228be6;" text="Enviar" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+        <ScrollPane hbarPolicy="NEVER" layoutX="20.0" layoutY="75.0" prefHeight="225.0" prefWidth="550.0" vbarPolicy="ALWAYS">
             <content>
-                <VBox fx:id="messageContainer" prefHeight="200.0" prefWidth="535.0" spacing="10.0" />
+                <VBox fx:id="messageContainer" prefHeight="219.0" prefWidth="535.0" spacing="10.0" />
             </content>
         </ScrollPane>
-        <Button fx:id="exitButton" graphicTextGap="1.0" layoutX="20.0" layoutY="20.0" onAction="#goToChatRoom" prefHeight="40.0" prefWidth="72.0" text="🔙" textAlignment="CENTER">
+        <Button fx:id="exitButton" graphicTextGap="1.0" layoutX="20.0" layoutY="20.0" onAction="#goToChatRoom" prefHeight="40.0" prefWidth="72.0" style="-fx-background-color: #228be6;" text="🔙" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Button>
-      <Button fx:id="downLoadButton" graphicTextGap="1.0" layoutX="498.0" layoutY="20.0" onAction="#exportToCSV" prefHeight="40.0" prefWidth="72.0" text="⬇" textAlignment="CENTER">
+      <Button fx:id="downLoadButton" graphicTextGap="1.0" layoutX="498.0" layoutY="20.0" onAction="#exportToCSV" prefHeight="40.0" prefWidth="72.0" style="-fx-background-color: #228be6;" text="⬇" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

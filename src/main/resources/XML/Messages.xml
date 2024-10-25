@@ -72,4 +72,22 @@
         <date>24-10-2024</date>
         <time>20:00:43</time>
     </message>
+    <message>
+        <sender>
+            <Name>a</Name>
+            <Surname>a</Surname>
+            <Email>a@a.com</Email>
+            <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
+        </sender>
+        <receiver>
+            <Name>pollas</Name>
+            <Surname>a</Surname>
+            <Email>e@e.com</Email>
+            <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
+        </receiver>
+        <content>sisisi</content>
+        <messageID>4</messageID>
+        <date>25-10-2024</date>
+        <time>09:23:01</time>
+    </message>
 </messageList>
