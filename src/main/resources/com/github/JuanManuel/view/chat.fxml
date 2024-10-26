@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JuanManuel.view.ChatController">
     <children>
         <TextField fx:id="messageField" layoutX="20.0" layoutY="327.0" prefHeight="40.0" prefWidth="400.0" promptText="Ingresa su mensaje" />
         <Button layoutX="451.0" layoutY="327.0" onAction="#handleSendMessage" prefHeight="40.0" prefWidth="72.0" style="-fx-background-color: #228be6;" text="Enviar" textFill="WHITE">
@@ -27,6 +27,11 @@
       <Button fx:id="downLoadButton" graphicTextGap="1.0" layoutX="498.0" layoutY="20.0" onAction="#exportToCSV" prefHeight="40.0" prefWidth="72.0" style="-fx-background-color: #228be6;" text="⬇" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="resumeButton" layoutX="388.0" layoutY="20.0" onAction="#resumeConver" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #228be6;" text="Resumen" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
          </font>
       </Button>
     </children>

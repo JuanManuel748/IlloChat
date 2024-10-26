@@ -1,8 +1,7 @@
 package com.github.JuanManuel.view;
 
 import com.github.JuanManuel.App;
-import com.github.JuanManuel.model.entity.User;
-import com.github.JuanManuel.model.entity.UserList_Singleton;
+import com.github.JuanManuel.model.entity.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -88,7 +87,9 @@ public class ChatRoomController extends Controller implements Initializable {
     private void sortByDate(ActionEvent event) {
         // Función para ordenar la lista de usuarios por la fecha del último mensaje
         List<User> userList = UserList_Singleton.getInstance().getUsers();
-        //userList.sort((u1, u2) -> u1.getLastMessageDate().compareTo(u2.getLastMessageDate()));
+        List<Message> msgList = MessageList_Singleton.getInstance().getMessages();
+
+
         tableUsers.getItems().setAll(userList);
     }
 
