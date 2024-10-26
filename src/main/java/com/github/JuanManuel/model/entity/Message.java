@@ -8,7 +8,7 @@ import java.util.List;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Message {
+public class Message{
     @XmlElement
     private User sender;
     @XmlElement
@@ -119,4 +119,7 @@ public class Message {
                 this.content + "\n" +
                 this.date + "  " + this.time + "\n";
     }
+
+
+
 }

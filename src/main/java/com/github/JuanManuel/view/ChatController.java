@@ -5,33 +5,28 @@ import com.github.JuanManuel.model.entity.Message;
 import com.github.JuanManuel.model.entity.MessageList;
 import com.github.JuanManuel.model.entity.User;
 import com.github.JuanManuel.model.utils.XMLManager;
-import com.github.JuanManuel.view.LoginController;
-import com.github.JuanManuel.view.WelcomeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOError;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.ResourceBundle;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
-import static com.github.JuanManuel.App.scene;
 
 public class ChatController extends Controller implements Initializable {
 
     @FXML
     private Button exitButton;
+    @FXML
+    private Button resumeButton;
+    @FXML
+    private Button downLoadButton;
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -85,13 +80,12 @@ public class ChatController extends Controller implements Initializable {
         messageContainer.getChildren().clear();
         for (Message message : messageList.getMessages()) {
             if ((message.getSender().Equals(currentUser) && message.getReceiver().Equals(selectedContact)) ||
-                (message.getSender().Equals(selectedContact) && message.getReceiver().Equals(currentUser))) {
-                    ListFilt.add(message);
-                    addMessageToContainer(message);
+                    (message.getSender().Equals(selectedContact) && message.getReceiver().Equals(currentUser))) {
+
+                addMessageToContainer(message);
             }
         }
     }
-
 
 
     private void addMessageToContainer(Message message) {
@@ -132,12 +126,18 @@ public class ChatController extends Controller implements Initializable {
     }
 
 
-        @FXML
+    @FXML
     public void exportToCSV(ActionEvent event) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("messages.csv"))) {
+        for (Message me : messageList.getMessages()) {
+            if ((me.getSender().Equals(currentUser) && me.getReceiver().Equals(selectedContact)) ||
+                    (me.getSender().Equals(selectedContact) && me.getReceiver().Equals(currentUser))) {
+                ListFilt.add(me);
+            }
+        }
+        try (OutputStream os = new FileOutputStream("messages.csv")) {
             for (Message m : ListFilt) {
 
-                writer.write(m.toCSV());
+                os.write(m.toCSV().getBytes());
             }
             showAlert(Alert.AlertType.INFORMATION, "Exportación exitosa", "La conversación ha sido exportada a messages.csv");
         } catch (IOException IOe) {
@@ -146,4 +146,63 @@ public class ChatController extends Controller implements Initializable {
     }
 
 
+    @FXML
+    public void resumeConver(ActionEvent event) {
+        int userMessageCount = 0;
+        int contactMessageCount = 0;
+        Map<String, Integer> wordFrequency = new HashMap<>();
+        String longestWord = "";
+        Map<Integer, Integer> hourFrequency = new HashMap<>();
+
+        for (Message message : messageList.getMessages()) {
+            if (message.getSender().Equals(currentUser) && message.getReceiver().Equals(selectedContact)) {
+                userMessageCount++;
+            } else if (message.getSender().Equals(selectedContact) && message.getReceiver().Equals(currentUser)) {
+                contactMessageCount++;
+            }
+
+            String[] words = message.getContent().split("\\s+");
+            if ((message.getSender().Equals(currentUser) && message.getReceiver().Equals(selectedContact)) ||
+                    (message.getSender().Equals(selectedContact) && message.getReceiver().Equals(currentUser))) {
+                for (String word : words) {
+                    wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
+                    if (word.length() > longestWord.length()) {
+                        longestWord = word;
+                    }
+                }
+            }
+
+            int hour = LocalTime.parse(message.getTime(), DateTimeFormatter.ofPattern("HH:mm:ss")).getHour();
+            hourFrequency.put(hour, hourFrequency.getOrDefault(hour, 0) + 1);
+        }
+
+        String mostCommonWord = wordFrequency.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse("");
+
+
+        String summary = String.format("Mensajes enviados: %d\nMensajes recibidos: %d\nPalabra más común: %s\nPalabra más larga: %s",
+                userMessageCount, contactMessageCount, mostCommonWord, longestWord);
+
+        try (OutputStream os = new FileOutputStream("summary.txt")) {
+            os.write(summary.getBytes());
+            showAlert(Alert.AlertType.INFORMATION, "Exportación exitosa", "El resumen ha sido exportado a summary.txt");
+        } catch (IOException IOe) {
+            showAlert(Alert.AlertType.ERROR, "ERROR AL EXPORTAR", "Se ha detenido la exportación del resumen");
+        }
+
+        showSummaryModal(summary);
+    }
+
+    private void showSummaryModal(String summary) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Resumen de la conversación");
+        alert.setHeaderText(null);
+        alert.setContentText(summary);
+        alert.showAndWait();
+    }
+
 }
+
+
