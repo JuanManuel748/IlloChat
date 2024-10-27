@@ -5,6 +5,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -79,4 +84,34 @@ public class User {
         return this.Email.equals(u.getEmail());
     }
 
+    public LocalDateTime getLastMessageDate() {
+        LocalDateTime result = LocalDateTime.MIN;
+        List<Message> msgList = MessageList_Singleton.getInstance().getMessages();
+
+        if (msgList == null || msgList.isEmpty()) {
+            return result;
+        }
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        List<Message> filtList = new ArrayList<>();
+
+        for (Message msg : msgList) {
+            if (msg.getSender().Equals(this)) {
+                filtList.add(msg);
+            }
+        }
+
+        if (filtList.isEmpty()) {
+            return result;
+        }
+        filtList.sort((o1, o2) -> {
+            LocalDateTime date1 = LocalDateTime.parse(o1.getDate() + " " + o1.getTime(), dateTimeFormatter);
+            LocalDateTime date2 = LocalDateTime.parse(o2.getDate() + " " + o2.getTime(), dateTimeFormatter);
+            return date2.compareTo(date1);
+        });
+
+        Message lastMessage = filtList.get(0);
+        result = LocalDateTime.parse(lastMessage.getDate() + " " + lastMessage.getTime(), dateTimeFormatter);
+        return result;
+    }
 }
