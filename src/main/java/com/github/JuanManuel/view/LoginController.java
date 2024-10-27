@@ -35,28 +35,29 @@ public class LoginController extends Controller implements Initializable {
 
     @Override
     public void onOpen(Object input) throws Exception {
-
+        // Método que se llama al abrir la vista
     }
 
     @Override
     public void onClose(Object output) {
-
+        // Método que se llama al cerrar la vista
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        // Método inicializador
     }
 
     @FXML
     public void onLogin(ActionEvent actionEvent) {
+        // Maneja el proceso de inicio de sesión
         try {
             String email = emailField.getText().trim();
             email = email.toLowerCase();
             String password = passwordField.getText().trim();
             String hashedPassword = HashPass.hashPassword(password);
 
-            // Check if any field is empty
+            // Verifica si algún campo está vacío
             if (email.isEmpty() || hashedPassword.isEmpty()) {
                 showAlert(Alert.AlertType.ERROR, "Campos Vacíos", "Por favor, complete todos los campos.");
             } else {
@@ -73,15 +74,13 @@ public class LoginController extends Controller implements Initializable {
                             }
                         }
                     }
-                    // Show success message and navigate to main page
+                    // Muestra mensaje de éxito y navega a la página principal
                     if (loged) {
-                        showAlert(Alert.AlertType.INFORMATION, "Cliente Logueado", "El cliente se ha loqueado correctamente.");
+                        showAlert(Alert.AlertType.INFORMATION, "Cliente Logueado", "El cliente se ha logueado correctamente.");
                         App.currentController.changeScene(Scenes.CHATROOM, null);
                     } else {
                         showAlert(Alert.AlertType.INFORMATION, "Cliente no encontrado", "El email o la contraseña no corresponden con los guardados en nuestros archivos.");
                     }
-
-
                 }
             }
         } catch (Exception e) {
@@ -90,8 +89,8 @@ public class LoginController extends Controller implements Initializable {
         }
     }
 
-    public boolean existsEmail (String email) {
-
+    public boolean existsEmail(String email) {
+        // Verifica si el correo existe en la lista de usuarios
         List<User> users = userContainer.getUsers();
         for (User user : users) {
             if (user.getEmail().equals(email)) {
@@ -100,17 +99,19 @@ public class LoginController extends Controller implements Initializable {
             }
         }
         return false;
-
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String content) {
+        // Muestra una alerta en pantalla
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
     }
+
     public void goToRegister(ActionEvent actionEvent) {
+        // Navega a la vista de registro
         try {
             App.currentController.changeScene(Scenes.REGISTER, null);
         } catch (Exception e) {

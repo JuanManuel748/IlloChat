@@ -8,7 +8,7 @@ import java.util.List;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Message{
+public class Message {
     @XmlElement
     private User sender;
     @XmlElement
@@ -18,14 +18,14 @@ public class Message{
     @XmlElement
     private int messageID;
     @XmlElement
-    private String date;   // Date attribute
+    private String date;
     @XmlElement
-    private String time;   // Time attribute
+    private String time;
     private static final DateTimeFormatter Dformatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     private static final DateTimeFormatter Tformatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    // Full constructor
     public Message(User sender, User recipient, String content) {
+        // Constructor para crear un mensaje con los detalles del remitente, destinatario y contenido
         this.sender = sender;
         this.receiver = recipient;
         this.content = content;
@@ -36,11 +36,10 @@ public class Message{
         this.time = Tnow.format(Tformatter);
     }
 
-    // Empty constructor
     public Message() {
+        // Constructor vacío
     }
 
-    // GETTERS
     public User getSender() {
         return sender;
     }
@@ -65,7 +64,6 @@ public class Message{
         return time;
     }
 
-    // SETTERS
     public void setSender(User sender) {
         this.sender = sender;
     }
@@ -90,21 +88,18 @@ public class Message{
         this.time = time.format(Tformatter);
     }
 
-    // toString method
     @Override
     public String toString() {
-        /*
-        String recipientName = (receiver != null) ? receiver.getName() : "Unknown";
-        return String.format("From: %s To: %s\n%s\n%s %s", sender.getName(), recipientName, content, date, time);
-        */
-         return this.date + "\n" + this.content + "\n" + this.time;
+        // Método para representar el mensaje como una cadena
+        return this.date + "\n" + this.content + "\n" + this.time;
     }
 
     public int searchID() {
+        // Busca el siguiente ID disponible para un nuevo mensaje
         List<Message> msgContainer = MessageList_Singleton.getInstance().getMessages();
         int tempID = 0;
         for (Message m: msgContainer) {
-            if(m.getMessageID() == tempID)  {
+            if (m.getMessageID() == tempID)  {
                 tempID++;
             } else {
                 break;
@@ -113,13 +108,10 @@ public class Message{
         return tempID;
     }
 
-
     public String toCSV() {
-        return "From: " + this.sender.getName() + " " +this.sender.getSurname() + ", To: " + this.receiver.getName() + " " +this.receiver.getSurname() + "\n" +
+        // Convierte el mensaje a formato CSV
+        return "From: " + this.sender.getName() + " " + this.sender.getSurname() + ", To: " + this.receiver.getName() + " " + this.receiver.getSurname() + "\n" +
                 this.content + "\n" +
                 this.date + "  " + this.time + "\n";
     }
-
-
-
 }

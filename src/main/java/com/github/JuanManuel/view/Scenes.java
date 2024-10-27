@@ -5,16 +5,16 @@ public enum Scenes {
     Pantallas:
         -WELCOME
         -LOG IN
-        -REGISTER/SIGN IN
+        -REGISTER
         -Lista con todos los chats
         -Chat con otro usuario
-        -resumen de conversacion
+
     */
     ROOT("view/layout.fxml"),//PAGINA PRINCIPAL
     WELCOME("view/Welcome.fxml"), //ELEGIR ROL
     //MAINPAGE("view/mainPage.fxml"), //PAGINA PRINCIPAL
     LOGIN("view/login.fxml"), // PAGINA LOGIN
-    REGISTER("view/register.fxml"), // PAGINA SIGN IN
+    REGISTER("view/register.fxml"), // PAGINA REGISTER
     CHATROOM("view/chatRoom.fxml"), // PAGINA MENU CON TODOS LOS CHATS DEL USUARIO
     CHAT("view/chat.fxml"); // PAIGNA PARA CHATEAR CON OTRO USUARIO
 

@@ -11,27 +11,43 @@ import java.util.List;
 @XmlRootElement(name="userList")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class UserList_Singleton implements Serializable {
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
     private static final String FILENAME = WelcomeController.userXML;
     private static UserList_Singleton _instance;
 
     @XmlElement(name="user")
     private List<User> usrList;
 
-    private UserList_Singleton() {usrList = new ArrayList<>();}
+    private UserList_Singleton() {
+        // Inicializa la lista de usuarios
+        usrList = new ArrayList<>();
+    }
 
     public static UserList_Singleton getInstance() {
-        if(_instance == null) {
+        // Devuelve la instancia única, cargándola desde XML si no existe
+        if (_instance == null) {
             _instance = XMLManager.readXML(new UserList_Singleton(), FILENAME);
         }
         return _instance;
     }
 
-    public boolean save() {return XMLManager.writeXML(this, FILENAME);}
-    public List<User> getUsers() {return usrList;}
-    public void setUsers(List<User> usrLS) {this.usrList = usrLS;}
+    public boolean save() {
+        // Guarda la lista de usuarios en un archivo XML
+        return XMLManager.writeXML(this, FILENAME);
+    }
+
+    public List<User> getUsers() {
+        // Devuelve la lista de usuarios
+        return usrList;
+    }
+
+    public void setUsers(List<User> usrLS) {
+        // Establece la lista de usuarios
+        this.usrList = usrLS;
+    }
 
     public boolean addUser(User u) {
+        // Añade un usuario a la lista y guarda los cambios
         boolean result = this.usrList.add(u);
         save();
         return result;
@@ -39,10 +55,9 @@ public class UserList_Singleton implements Serializable {
 
     @Override
     public String toString() {
+        // Representación en cadena de la lista de usuarios
         return "UserList{" +
                 "usrList=" + usrList +
                 '}';
     }
-
-
 }
