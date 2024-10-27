@@ -1,6 +1,5 @@
 package com.github.JuanManuel.model.entity;
 
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -8,13 +7,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class User {
-    // ATTRIBUTES
+    // ATRIBUTOS
     @XmlElement
     private String Name;
     @XmlElement
@@ -24,8 +22,7 @@ public class User {
     @XmlElement
     private String Password;
 
-
-    // CONSTRUCTORS
+    // CONSTRUCTORES
     public User(String name, String surname, String email, String password) {
         this.Name = name;
         this.Surname = surname;
@@ -80,10 +77,12 @@ public class User {
                 '}';
     }
 
-    public boolean Equals (User u) {
+    // Compara si este usuario es igual a otro
+    public boolean Equals(User u) {
         return this.Email.equals(u.getEmail());
     }
 
+    // Obtiene la fecha del último mensaje enviado por este usuario
     public LocalDateTime getLastMessageDate() {
         LocalDateTime result = LocalDateTime.MIN;
         List<Message> msgList = MessageList_Singleton.getInstance().getMessages();

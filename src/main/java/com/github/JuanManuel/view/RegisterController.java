@@ -38,17 +38,17 @@ public class RegisterController extends Controller implements Initializable {
 
     @Override
     public void onOpen(Object input) throws Exception {
-
+        // Método que se llama al abrir la vista
     }
 
     @Override
     public void onClose(Object output) {
-
+        // Método que se llama al cerrar la vista
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        // Método inicializador
     }
 
     private boolean validateEmail(String email) {
@@ -58,6 +58,7 @@ public class RegisterController extends Controller implements Initializable {
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String content) {
+        // Muestra una alerta en pantalla
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -67,6 +68,7 @@ public class RegisterController extends Controller implements Initializable {
 
     @FXML
     public void onRegister(ActionEvent actionEvent) {
+        // Maneja el proceso de registro de un nuevo usuario
         try {
             String name = nameField.getText().trim();
             String surname = surnameField.getText().trim();
@@ -75,25 +77,24 @@ public class RegisterController extends Controller implements Initializable {
             String password = passwordField.getText().trim();
             String hashedPassword = HashPass.hashPassword(password);
 
-            // Check if any field is empty
+            // Verifica si algún campo está vacío
             if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || hashedPassword.isEmpty()) {
                 showAlert(Alert.AlertType.ERROR, "Campos Vacíos", "Por favor, complete todos los campos.");
             } else {
-                // Validate email format
+                // Valida el formato del correo electrónico
                 if (!validateEmail(email)) {
                     showAlert(Alert.AlertType.ERROR, "Error en formato del correo electronico", "El formato del correo electrónico no es válido.");
                 } else if (existsEmail(email)){
                     showAlert(Alert.AlertType.ERROR, "Error correo ya existe", "El correo ya existe en el archivo xml.");
-                }else {
-                    // Create Client object and save to xml
+                } else {
+                    // Crea un objeto User y lo guarda en el XML
                     User userTemp = new User(name, surname, email, hashedPassword);
                     userContainer.add(userTemp);
                     XMLManager.writeXML(userContainer, WelcomeController.userXML);
 
-                    // Show success message and navigate to main page
+                    // Muestra mensaje de éxito y navega a la página de inicio de sesión
                     showAlert(Alert.AlertType.INFORMATION, "Cliente Registrado", "El cliente se ha registrado correctamente.");
                     App.currentController.changeScene(Scenes.LOGIN, null);
-
                 }
             }
         } catch (Exception e) {
@@ -103,6 +104,7 @@ public class RegisterController extends Controller implements Initializable {
     }
 
     public void goToLogin(ActionEvent actionEvent) {
+        // Navega a la vista de inicio de sesión
         try {
             App.currentController.changeScene(Scenes.LOGIN, null);
         } catch (Exception e) {
@@ -110,9 +112,8 @@ public class RegisterController extends Controller implements Initializable {
         }
     }
 
-
-    public boolean existsEmail (String email) {
-
+    public boolean existsEmail(String email) {
+        // Verifica si el correo existe en la lista de usuarios
         List<User> users = userContainer.getUsers();
         for (User user : users) {
             if (user.getEmail().equals(email)) {
@@ -121,9 +122,5 @@ public class RegisterController extends Controller implements Initializable {
             }
         }
         return false;
-
     }
-
-
-
 }

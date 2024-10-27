@@ -13,11 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -35,16 +31,19 @@ public class ChatRoomController extends Controller implements Initializable {
 
     private User currentUser;
 
+    // Método que se ejecuta al abrir la sala de chat
     @Override
     public void onOpen(Object input) throws Exception {
         this.currentUser = LoginController.Sender;
         printAllUsers();
     }
 
+    // Método que se ejecuta al cerrar la sala de chat
     @Override
     public void onClose(Object output) {
     }
 
+    // Método inicializador que se ejecuta al cargar el controlador
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -61,6 +60,7 @@ public class ChatRoomController extends Controller implements Initializable {
         });
     }
 
+    // Método para abrir la ventana de chat con un usuario seleccionado
     private void goToChat(User selectedUser) {
         try {
             App.currentController.changeScene(Scenes.CHAT, selectedUser);
@@ -69,6 +69,7 @@ public class ChatRoomController extends Controller implements Initializable {
         }
     }
 
+    // Método para mostrar una alerta
     private void showAlert(Alert.AlertType alertType, String title, String content) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -77,6 +78,7 @@ public class ChatRoomController extends Controller implements Initializable {
         alert.showAndWait();
     }
 
+    // Método para ordenar la lista de usuarios por nombre
     @FXML
     private void sortByName(ActionEvent event) {
         List<User> userList = UserList_Singleton.getInstance().getUsers();
@@ -84,22 +86,15 @@ public class ChatRoomController extends Controller implements Initializable {
         tableUsers.getItems().setAll(userList);
     }
 
+    // Método para ordenar la lista de usuarios por fecha de último mensaje
     @FXML
     private void sortByDate(ActionEvent event) {
         List<User> userList = UserList_Singleton.getInstance().getUsers();
-        userList.sort(new Comparator<User>() {
-            @Override
-            public int compare(User u1, User u2) {
-                LocalDateTime lastMessageDate1 = u1.getLastMessageDate();
-                LocalDateTime lastMessageDate2 = u2.getLastMessageDate();
-
-                return lastMessageDate2.compareTo(lastMessageDate1);
-            }
-        });
+        userList.sort((u1, u2) -> u2.getLastMessageDate().compareTo(u1.getLastMessageDate()));
         tableUsers.getItems().setAll(userList);
     }
 
-
+    // Método para imprimir la lista de todos los usuarios, excluyendo al usuario actual
     private void printAllUsers() {
         List<User> userList = UserList_Singleton.getInstance().getUsers();
         userList.removeIf(user -> user.getEmail().equals(currentUser.getEmail()));

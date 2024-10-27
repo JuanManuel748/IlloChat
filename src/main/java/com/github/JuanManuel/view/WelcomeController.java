@@ -20,21 +20,21 @@ public class WelcomeController extends Controller implements Initializable {
 
     @Override
     public void onOpen(Object input) throws Exception {
-
+        // Método que se llama al abrir la vista
     }
 
     @Override
     public void onClose(Object output) {
-
+        // Método que se llama al cerrar la vista
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        // Método inicializador
     }
 
     public void setAdminWayButton() throws Exception {
+        // Cambia a la vista de inicio de sesión
         App.currentController.changeScene(Scenes.LOGIN, null);
     }
-
 }
