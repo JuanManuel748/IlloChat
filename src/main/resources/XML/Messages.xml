@@ -378,4 +378,40 @@
         <date>26-10-2024</date>
         <time>11:10:47</time>
     </message>
+    <message>
+        <sender>
+            <Name>pollas</Name>
+            <Surname>a</Surname>
+            <Email>e@e.com</Email>
+            <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
+        </sender>
+        <receiver>
+            <Name>a</Name>
+            <Surname>a</Surname>
+            <Email>a@a.com</Email>
+            <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
+        </receiver>
+        <content>asdasdasdasd</content>
+        <messageID>21</messageID>
+        <date>27-10-2024</date>
+        <time>22:23:59</time>
+    </message>
+    <message>
+        <sender>
+            <Name>a</Name>
+            <Surname>a</Surname>
+            <Email>a@a.com</Email>
+            <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
+        </sender>
+        <receiver>
+            <Name>juandavid</Name>
+            <Surname>contreras</Surname>
+            <Email>o@gmail.com</Email>
+            <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
+        </receiver>
+        <content>asdasdasd</content>
+        <messageID>22</messageID>
+        <date>27-10-2024</date>
+        <time>22:46:39</time>
+    </message>
 </messageList>

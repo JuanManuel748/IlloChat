@@ -3,17 +3,25 @@ package com.github.JuanManuel.test;
 import com.github.JuanManuel.model.entity.*;
 import com.github.JuanManuel.model.utils.XMLManager;
 import com.github.JuanManuel.view.WelcomeController;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class testMessage {
     public static void main(String[] args) {
-        User franfu = new User("Franfu", "fran", "fran@gmail.com", "12345678");
-        User Andrea = new User("Andrea", "ande", "andrea@gmail.com", "asdasd12");
-        String contentMSG = "Buenos dias loca";
+        List<Message> msgList = MessageList_Singleton.getInstance().getMessages();
+        msgList.sort(new Comparator<Message>() {
+            @Override
+            public int compare(Message o1, Message o2) {
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                LocalDateTime date1 = LocalDateTime.parse(o1.getDate() + " " + o1.getTime(), dateTimeFormatter);
+                LocalDateTime date2 = LocalDateTime.parse(o2.getDate() + " " + o2.getTime(), dateTimeFormatter);
 
-        Message msg1 = new Message(franfu, Andrea, contentMSG);
-        //XMLManager.writeXML(msg1, WelcomeController.messageXML);
+                return date2.compareTo(date1);
+            }
+        });
 
-        System.out.println(msg1.toCSV());
+        System.out.println(msgList);
     }
 }
