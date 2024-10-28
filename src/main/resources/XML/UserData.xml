@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <userList>
     <user>
-        <Name>a</Name>
-        <Surname>a</Surname>
-        <Email>a@a.com</Email>
-        <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
-    </user>
-    <user>
-        <Name>pollas</Name>
-        <Surname>a</Surname>
-        <Email>e@e.com</Email>
-        <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
-    </user>
-    <user>
         <Name>juanma</Name>
         <Surname>a</Surname>
         <Email>juanma@gmail.com</Email>
         <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
     </user>
     <user>
-        <Name>juandavid</Name>
-        <Surname>contreras</Surname>
-        <Email>o@gmail.com</Email>
-        <Password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</Password>
+        <Name>Francisco</Name>
+        <Surname>Furioso</Surname>
+        <Email>fran@gmail.com</Email>
+        <Password>ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f</Password>
     </user>
 </userList>

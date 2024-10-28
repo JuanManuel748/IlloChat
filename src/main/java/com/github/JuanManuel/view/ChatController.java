@@ -126,14 +126,15 @@ public class ChatController extends Controller implements Initializable {
     @FXML
     public void exportToCSV(ActionEvent event) {
         // Exporta la conversación a un archivo CSV
+        List<Message> filtredMessages = new ArrayList<>();
         for (Message me : messageList.getMessages()) {
             if ((me.getSender().Equals(currentUser) && me.getReceiver().Equals(selectedContact)) ||
                     (me.getSender().Equals(selectedContact) && me.getReceiver().Equals(currentUser))) {
-                ListFilt.add(me);
+                filtredMessages.add(me);
             }
         }
         try (OutputStream os = new FileOutputStream("messages.csv")) {
-            for (Message m : ListFilt) {
+            for (Message m : filtredMessages) {
                 os.write(m.toCSV().getBytes());
             }
             showAlert(Alert.AlertType.INFORMATION, "Exportación exitosa", "La conversación ha sido exportada a messages.csv");
